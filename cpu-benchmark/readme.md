@@ -8,6 +8,10 @@
 
 user	0m14.843s
 
+`time cpu-test 100 666666`
+
+user	0m9.49s
+
 `time cpu-test 100 10000000`
 
 user	2m29.608s
@@ -31,7 +35,7 @@ chrome https://cpux.net/b/h7k2m
 
 safari https://cpux.net/b/c8e2c
 
-# ipad mini 
+# ipad mini 5
 
 safari https://cpux.net/b/n5z8o
 
