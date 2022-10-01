@@ -8,4 +8,4 @@ zipped_file=bin.zip
 # s3 public url
 rm -rf /tmp/$zipped_file
 wget https://myapp-public.s3.amazonaws.com/$zipped_file -P /tmp
-unzip -ou /tmp/$zipped_file -d $bin_parent
+unzip -oKu /tmp/$zipped_file -d $bin_parent
