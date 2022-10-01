@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -uxe
+
+bin_parent=$1
+# parent folder path of the target bin dir
+zipped_file=bin.zip
+# s3 public url
+wget https://myapp-public.s3.amazonaws.com/$zipped_file -P /tmp
+unzip /tmp/$zipped_file -d $bin_parent
