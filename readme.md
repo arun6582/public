@@ -7,5 +7,5 @@
 ###### disk test
 `curl -sL https://git.io/JO3vT | sudo bash -`
 
-### download bin helpers
+### download terminal helpers
 `curl -sL https://tinyurl.com/56hh3fxr | bash -s -- [target bin parent folder]`
