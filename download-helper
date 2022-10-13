@@ -7,5 +7,5 @@ bin_parent=$1
 zipped_file=bin.zip
 # s3 public url
 rm -rf /tmp/$zipped_file
-wget https://myapp-public.s3.amazonaws.com/$zipped_file -P /tmp
+curl https://myapp-public.s3.amazonaws.com/$zipped_file -o /tmp/$zipped_file
 unzip -oKu /tmp/$zipped_file -d $bin_parent
