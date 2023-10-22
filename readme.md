@@ -11,4 +11,4 @@
 `curl -sL https://tinyurl.com/56hh3fxr | bash -s -- [target bin parent folder]`
 
 ### download inputrc
-`curl https://tinyurl.com/2aahxhhp --output ~/.inputrc` 
+`wget https://tinyurl.com/2aahxhhp` 
