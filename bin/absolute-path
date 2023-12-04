@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -eu
+
+if [ -f "$1" ]; then
+  path="$(
+    cd "$(dirname "$1")"
+    pwd
+  )/$(basename "$1")"
+  echo $path
+elif $(which $1 >/dev/null); then
+  echo $(which $1)
+else
+  pretty-msg 'no such file'
+  exit 1
+fi

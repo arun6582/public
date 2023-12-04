@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# launchctl permission do not work until
+# you give full disk access to /usr/bin/env
+# which is a shebang here
+
+# regex match commands
+# latest file in a folder
+
+set -e
+
+screenshot_folder=$1
+pretty-msg "Copy Latest Screenshot"
+
+# warnings
+# https://stackoverflow.com/questions/5885934/bash-function-to-find-newest-file-matching-pattern
+
+latest_file=$(ls -t $screenshot_folder | head -1)
+latest_file=$(join-path "$screenshot_folder" "$latest_file")
+
+if [[ $latest_file =~ .mov$ ]]; then
+	new_latest_file=$latest_file.mp4
+	avconvert -s "$latest_file" -o "$new_latest_file" -p PresetPassthrough
+	rm -rf "$latest_file"
+	latest_file=$new_latest_file
+fi
+
+if [[ $latest_file =~ .(png|jpeg|jpg)$ ]]; then
+	pretty-msg 'copy screenshot to clipboard'
+	copy-image "$latest_file"
+  notify 'Copy screenshot' "$(basename "$latest_file")"
+fi
+
+echo result=$latest_file

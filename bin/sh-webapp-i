@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# shortcut for bundle install
+
+bundle install
+rm -rf node_modules
+pnpm install

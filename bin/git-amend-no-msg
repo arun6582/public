@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# first argument is remote name
+
+set -eu
+
+remote=$1
+git ci --amend --no-edit
+rest="${@:2}"
+git spush $remote -f $rest

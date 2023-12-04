@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -x
+
+sudo launchctl bootout system/org.nixos.nix-daemon
+sudo rm /Library/LaunchDaemons/org.nixos.nix-daemon.plist
+sudo rm -rf /etc/zshrc
+sudo rm -rf /etc/bashrc
+sudo rm -rf /etc/nix /nix /var/root/.nix-profile /var/root/.nix-defexpr /var/root/.nix-channels /Users/arun/.nix-profile /Users/arun/.nix-defexpr /Users/arun/.nix-channels

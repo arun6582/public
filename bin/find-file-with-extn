@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euv
+
+find . -name "*\.$1"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# first argument is remote name
+# second argument is mgs
+
+set -eu
+
+remote=$1
+git add $(git rev-parse --show-toplevel)
+git ci -m "[$(active-branch)] $2"
+git spush $remote

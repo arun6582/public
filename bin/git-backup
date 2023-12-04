@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set +x
+
+action=$1
+
+if [[ "$action" == "start" ]]; then
+    inv launchd -a reload -s git-backup.sh -t $((3600 * 4))
+else
+    inv unload-plist -g 'git-backup.sh'
+fi

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if [[ ! -d "$UNTRACKED/.git" ]]; then
+    rm -rf $UNTRACKED
+    git clone $UNTRACKED_REPO $UNTRACKED
+fi

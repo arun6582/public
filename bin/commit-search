@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# set -x
+
+if [[ $2 == '--reverse' || $2 == '-r' ]]; then
+    hist=$(git log --reverse --pretty=format:"%h")
+else
+    hist=$(git log --pretty=format:"%h")
+fi
+
+commits=$(git rev-list --count HEAD)
+print_after=$((commits / 10))
+
+pretty-msg "Total commits: $commits"
+
+index=0
+for i in $hist; do
+    index=$((index + 1))
+    rem=$((index % print_after))
+    if [[ $rem == 0 ]]; then
+        pretty-msg "Searched $index/$commits commits"
+    fi
+    count=$(git show $i | rg "$1" -c)
+    if [[ ! -z "$count" && $count -gt 0 ]]; then
+        pretty-msg "#$index: $count Result found"
+        git show $i --pretty="%h%n%an%n%ar%n%ad" --no-patch
+        git show $i | rg "$1"
+        notify "Commit Search" "Results found"
+        read -n 1 -s
+    fi
+done
+
+notify "Commit Search" "Finished"

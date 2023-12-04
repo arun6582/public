@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -x
+
+if [[ "$(system-name)" == "Mac" ]]; then
+    open --background -a Docker
+fi

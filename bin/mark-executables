@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ag env.*bash ~/bin/ -l | xargs -I {} chmod +x {}

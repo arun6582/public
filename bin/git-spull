@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eu
+
+rest="${@:2}"
+branch=$(git rev-parse --abbrev-ref HEAD)
+git pull --rebase $1 $branch $rest

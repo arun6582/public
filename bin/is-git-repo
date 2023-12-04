@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -eu
+
+remote_url="$(git remote get-url $1)"
+
+if [[ $remote_url =~ .*github.com* ]]; then
+    echo 1
+fi

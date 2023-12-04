@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -xe
+
+port=$1
+lsof -i tcp:$port
+lsof -ti tcp:$port | xargs kill -9

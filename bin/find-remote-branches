@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+remote=$1
+
+# set -x
+
+get_branch() {
+	xremote=$1
+	branch=$(func-find-and-replace $xremote $2/)
+	echo $branch
+}
+
+for branch in $(git branch -r | grep -v HEAD | awk -F ' ' '{print $1}'); do
+	get_branch "$branch" $remote
+done

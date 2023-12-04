@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -uxe
+
+dockerfile=$1
+command=$2
+
+if [[ "$(system-name)" == "Mac" ]]; then
+    tag=$(echo $RANDOM | md5 | head -c 20)
+else
+    tag=$(echo $RANDOM | md5sum | head -c 20)
+fi
+
+run_options="${@:3}"
+
+docker build -t $tag -f $dockerfile .
+docker-image-run $tag "$command" $run_options

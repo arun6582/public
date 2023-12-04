@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# supposed to delete branch older than a specific date
+# usage
+# delete-branch-older-than [origin] [YYYY-MM-DD]
+
+set -uxe
+
+origin=$1
+date=$2
+
+origin_url=$(git remote get-url $origin)
+branches=$(find-remote-branches origin)
+x=($branches)
+total_branches=${#x[@]}
+index=1
+set +e
+git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+git fetch --all
+for branch in $branches; do
+    echo $index / $total_branches
+    reset-all-hard
+    git checkout $branch
+    commit_exist=$(git log -1 --after=$date)
+    if [ -z "$commit_exist" ]; then
+        git delete-branch $origin $branch
+    fi
+    index=$((index + 1))
+done

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -xu
+
+current_branch=$(active-branch)
+
+origin=$1
+from=$2
+to=$3
+
+git start $origin $from $to -f
+git spush $origin -f
+
+pretty-msg 'switch back to active branch'
+git co $current_branch

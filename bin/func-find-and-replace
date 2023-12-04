@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# set -x
+
+string=$1
+find=$2
+replace=$3
+
+echo ${string//$find/$replace}

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# first argument is remote name
+# second argument is commit msg
+
+set -eu
+
+
+remote=$1
+msg=$2
+git ci -m "[$(active-branch)] $msg"
+git spush "$remote"

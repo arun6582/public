@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -ux
+
+origin=$1
+product=$2
+sync-branch $origin release/$product release/safe/$product

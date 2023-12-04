@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -eu
+
+git add .
+git reset --hard

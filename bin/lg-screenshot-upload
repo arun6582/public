@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+pretty-msg "google screenshot uploader"
+screenshot_folder=$1
+upload_name=$2
+file=$(~/bin/copy-latest-screenshot "$screenshot_folder" | grep result=)
+file=${file//result=/}
+echo "file:$file"
+inv google-drive-upload "$file" "leadgenius.com" "~/Documents/leadgenius/google-drive-oauth/secret.json" -f "$upload_name"

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# set -e
+
+pretty-msg "google screenshot uploader"
+screenshot_folder=$1
+domain=$2
+credential_file=$(absolute-path "$3")
+echo $credential_file
+file=$(~/bin/copy-latest-screenshot "$screenshot_folder" | grep result=)
+file=${file//result=/}
+echo "file:$file"
+inv google-drive-upload -p "$file" -d "$domain" -c "$credential_file" -t "$domain"

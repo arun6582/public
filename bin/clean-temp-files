@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -x
+
+rm -rf ~/.npm/_cacache/tmp/*

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -ux
+
+# YES NO
+
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool $1
+killall Finder

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+title=$(sed-find-and-replace "$1" ^- '\\-')
+content=$(sed-find-and-replace "$2" ^- '\\-')
+
+if [[ -z "$content" ]]; then
+	terminal-notifier -message "$title"
+	exit
+fi
+
+terminal-notifier -message "$content" -title "$title"

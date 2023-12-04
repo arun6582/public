@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# will try to start branch from existing $2 branch
+# if fails then start the branch from master
+
+set -eu
+
+remote=$1
+source_branch=$2
+
+rest="${@:4}"
+new_branch=$3
+fetch-and-checkout $remote $source_branch $rest && git br $new_branch

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -eu
+
+remote=$1
+branch=$2
+
+rest="${@:3}"
+
+pretty-msg "FETCHING REMOTE: $remote BRANCH: $branch" --no-capitalize
+
+git fetch $remote $branch:$branch $rest
+git rebase $branch

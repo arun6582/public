@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# this command will switch to $2 branch
+# if the branch exist on remove it will fetch and then switch to it
+# if it doesnt if will start the branch from master
+
+# fetch-and-checkout stands for fetch and checkout
+
+set -eux
+
+rest="${@:3}"
+git br xyz
+
+remote=$1
+branch=$2
+
+pretty-msg "FETCHING REMOTE: $remote BRANCH: $branch" --no-capitalize
+
+git fetch $remote $branch:$branch $rest
+git checkout $branch

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -eu
+
+# commit with track_git_files
+
+set +e
+track-git-files "$*"
+set -e
+
+pretty-msg "git commit"
+git commit "$@"
+# notify 'Super Commit' "$*"

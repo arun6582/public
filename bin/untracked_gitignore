@@ -1,0 +1,13 @@
+.DS_Store
+*.xlsx
+*.csv
+*.docx
+*.doc
+*.mp4
+*.mp3
+*.mov
+*.img
+*.png
+*.jpeg
+*.jpg
+.devenv/

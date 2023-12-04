@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -eu
+
+open https://app.circleci.com/pipelines/github/$1/$2?branch=$3

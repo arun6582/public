@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+git rev-parse --verify HEAD | tr -d '\n' | pbcopy

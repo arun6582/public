@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# set -x
+
+string=$1
+find=$2
+replace=$3
+options=$4
+
+echo $(echo $string | sed -E "s/$find/$replace/$options")

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# purpose of this script is to fresh start the branch current branch
+
+# git branch-from-commit [commit id] [branch name]
+
+set -ux
+
+branch_name=$2
+commit=$(echo $1 | cut -c1-6)
+git br $branch_name
+git reset --hard $commit

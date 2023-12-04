@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+set -e
+
+branch=
+commit=
+
+while getopts "b:c:" opt; do
+	case $opt in
+	b)
+		branch=$OPTARG
+		echo "b: $branch"
+		;;
+	c)
+		commit=$OPTARG
+		echo "c: $commit"
+		;;
+	esac
+done
+
+untracked=~/projects/untracked
+setup-untracked
+
+git_dir=$(git rev-parse --show-toplevel)
+repo_branch=$(git rev-parse --abbrev-ref HEAD)
+repo_path=$(repo-path)
+checkout_branch=$repo_path/$repo_branch
+
+cd $untracked
+git add .
+git reset --hard
+fco origin master -f
+if [[ ! -z "$commit" ]]; then
+	git co $commit
+fi
+rsync --exclude='.git**' -az "$untracked/$checkout_branch/" "$git_dir/"
+pretty-msg "finished restoring $checkout_branch"

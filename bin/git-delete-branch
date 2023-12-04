@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# git delete-branch [origin] [branch]
+
+set -u
+
+origin=$1
+branch=$2
+
+git push $origin :$branch

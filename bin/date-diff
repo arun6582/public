@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+
+days=$1
+echo $(date -j -v -$(echo $days)d -f "%Y-%m-%d" "$(date +%Y-%m-%d)" +%Y-%m-%d)

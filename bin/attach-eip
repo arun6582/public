@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+public_address=$1
+instance_id=$2
+
+aws ec2 associate-address \
+    --public-ip $public_address \
+    --instance-id $instance_id \
+    --allow-reassociation

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -xu
+
+target_folder=$1
+file_pattern=$2
+
+ls $target_folder | grep $file_pattern | xargs -I {} echo /$target_folder/{} | xargs tail -f

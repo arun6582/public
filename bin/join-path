@@ -1,0 +1,8 @@
+#!/bin/bash
+
+path=''
+for var in "$@"; do
+	path="$path/$var"
+done
+
+echo $(echo $path | sed -E 's/\/+/\//g')

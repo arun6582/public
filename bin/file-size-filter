@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# usage file-size-filter [1000]
+# 1000 is in kbytes
+
+# set -x
+
+size=$1
+
+files=$(find . -type f)
+
+for file in $files; do
+    file_size=$(du -k $file | cut -f1)
+    if (($file_size > $size)); then
+        echo $file
+    fi
+done

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -eu
+
+# bash array
+
+remote_url="$(git remote get-url $1)"
+
+if [[ $remote_url =~ .*gitlab.com.* ]]; then
+    echo 1
+fi

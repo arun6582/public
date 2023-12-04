@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -u
+
+folder=$1
+mkdir -p "$folder"
+defaults write com.apple.screencapture location "$folder"
+defaults write com.apple.screencapture name "Screenshot"
+defaults write com.apple.screencapture "include-date" 1
+defaults write com.apple.screencapture show-thumbnail -bool FALSE
+killall SystemUIServer

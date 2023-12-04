@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -ux
+
+find_str=$1
+
+ag "$find_str" -l | xargs -I {} gsed -i "/$find_str/d" {}

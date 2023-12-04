@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# first argument is remote name
+# second argument is the msg
+
+set -eu
+
+remote=$1
+msg=$2
+
+rest="${@:3}"
+git ci --amend -m "[$(active-branch)] $msg"
+git spush $remote -f $rest

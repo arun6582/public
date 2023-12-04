@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eux
+
+host=$1
+
+scp ~/.inputrc $host:

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+msg=$1
+
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+if [[ $2 == '--no-capitalize' ]]; then
+	printf '%s\n' "$msg"
+else
+	y=${msg^^}
+	printf '%s\n' "$y"
+	# figlet "$msg"
+fi
+printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -

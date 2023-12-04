@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+public=~/projects/arun6582/public
+REPO="git@github.com:arun6582/public.git"
+
+if [[ ! -d "$public/.git" ]]; then
+    rm -rf $public
+    git clone $REPO $public
+fi
+
+cd $public
+
+fco origin master -f
+rsync -avz ~/projects/myapps/cmd-tools/playbooks/templates/bin/ bin/ --delete
+
+git add .
+git commit -m "terminal helpers: $(date)"
+git spush origin

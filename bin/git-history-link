@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eu
+
+# bash array
+
+remote_url="$(git remote get-url $1)"
+arrIN=(${remote_url//:/ })
+user_repo=${arrIN[1]}
+user_repo=${user_repo//.git/}
+service='unknown'
+commit=$2
+if [[ $(is-gitlab-repo $1) == 1 ]]; then
+	echo "https://gitlab.com/$user_repo/-/commits/$commit"
+elif [[ $(is-git-repo $1) == 1 ]]; then
+	echo "https://github.com/$user_repo/commits/$commit"
+elif [[ $(is-bit-repo $1) == 1 ]]; then
+	echo https://bitbucket.org/$user_repo/commits/branch/$commit
+else
+	echo unknown service: $remote_url
+fi

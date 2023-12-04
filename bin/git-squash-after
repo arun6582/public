@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+commit=$1
+msg=$2
+
+if [ -z "$msg" ]; then
+    msg=$(git log -1 --pretty=%B | xargs -I {} echo {})
+fi
+
+set -u
+
+git reset --soft $commit && git ci -m "[$(active-branch)] $msg"

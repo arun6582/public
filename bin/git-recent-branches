@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# save as git-recent-branches
+
+# usage
+# git recent-branches
+
+git branch --sort=-committerdate

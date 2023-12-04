@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# git pr origin target_branch source_branch | xargs open
+# source_branch is optional
+# will be current active branch if not specified
+
+set -u
+
+user_repo=$(repo-path $1)
+target_branch=$2
+set +u
+source_branch=$3
+
+if [ -z "$source_branch" ]; then
+    source_branch=$(git rev-parse --abbrev-ref HEAD)
+fi
+
+if [[ $(is-gitlab-repo $1) == 1 ]]; then
+    url="https://gitlab.com/$user_repo/-/merge_requests/new?merge_request%5Bsource_branch%5D=$source_branch&merge_request%5Btarget_branch%5D=$target_branch"
+elif [[ $(is-git-repo $1) == 1 ]]; then
+    url=https://github.com/$user_repo
+    url=$url/compare/$target_branch...$source_branch
+elif [[ $(is-bit-repo $1) == 1 ]]; then
+    url="https://bitbucket.org/$user_repo/pull-requests/new?source=$source_branch&dest=$target_branch"
+fi
+echo $url
+
+if [[ "$(system-name)" == "Mac" ]]; then
+    open $url
+else
+    xdg-open $url
+fi

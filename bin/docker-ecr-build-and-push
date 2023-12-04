@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -uxe
+
+dockerfile=$1
+tag=$2
+
+docker login \
+    -u AWS \
+    -p $(aws ecr get-login-password) \
+    $tag
+docker build -t $tag -f $dockerfile .
+docker push $tag

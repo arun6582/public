@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# git spush s stands for `super`
+# so git super push
+
+set -eu
+
+pretty-msg 'git push'
+
+remote=$1
+
+rest="${@:2}"
+branch="$(git rev-parse --abbrev-ref HEAD)"
+git push --set-upstream $remote $branch $rest
+
+pretty-msg "branch history"
+echo "$(git-history-link $remote $branch)"
+
+postpush_file="$(git rev-parse --show-toplevel)/.git/hooks/post-spush"
+# if this file exists; it will be executed
+# kind of like post push
+# terminal-notifier -title "Git Push" -message "$(repo-path):$branch" -open "$(git history-link $remote $branch)"
+
+if [ -f $postpush_file ]; then
+  $postpush_file
+fi

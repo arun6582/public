@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# set -eux
+
+python=$1
+ln -sf $(which $python) /usr/local/bin/python
+ln -sf $(which $python) /usr/local/bin/python3
+export PATH="$($python -m site --user-base)/bin":$ORIGINAL_PATH
