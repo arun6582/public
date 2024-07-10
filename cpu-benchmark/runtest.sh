@@ -1,7 +1,8 @@
-curl https://raw.githubusercontent.com/arun6582/public/master/cpu-benchmark/cpu-test --output cpu-test
-chmod +x cpu-test
+file=/tmp/cpu-test
+curl https://raw.githubusercontent.com/arun6582/public/master/cpu-benchmark/cpu-test --output $file
+chmod +x $file
 echo "Running test $2 times"
-time ./cpu-test $1 $2
+time $file $1 $2
 echo "Running test $(($2 * 10)) times"
-time ./cpu-test $1 $(($2 * 10))
-rm -rf ./cpu-test
+time $file $1 $(($2 * 10))
+rm -rf $file
