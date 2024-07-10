@@ -29,4 +29,7 @@ rm -rf $HOME/Library/Caches/Firefox
 # free trash
 ls ~/.Trash/ | xargs -I {} rm -rf "$HOME/.Trash/{}"
 
+# free npm cache
+rm -rf ~/.npm/_cacache/tmp/*
+
 logmsg "*********free local space finished"

@@ -9,5 +9,5 @@ docker login \
     -u AWS \
     -p $(aws ecr get-login-password) \
     $tag
-docker build -t $tag -f $dockerfile .
+docker build -t $tag -f $dockerfile . --progress=plain
 docker push $tag

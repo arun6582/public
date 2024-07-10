@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# python-venv 3.8
+# python-venv 3.10
+# python-venv 3.12
+# it will automatically create virtual env .venv folder with your chosen python env
+
 set -ux
 
-python -m venv $1
+python$1 -m venv .venv

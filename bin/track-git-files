@@ -30,7 +30,7 @@ git reset --hard
 fco origin master -f
 mkdir -p $tmp
 for file in $files; do
-	if [[ "$file" =~ ".devenv" ]]; then
+	if [[ "$file" =~ "venv" ]]; then
 		continue
 	else
 		save_path=$(join-path "$tmp" "$prefix" "$file")

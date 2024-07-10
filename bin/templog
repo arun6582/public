@@ -4,4 +4,4 @@ set -xu
 
 file_pattern=$1
 
-tail-log /tmp/ $file_pattern
+tail-log /tmp $file_pattern
