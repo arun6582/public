@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# download data using root account
+# otherwise jenkins credentials wont be download
+# due to permission issues
+
+set -xu
+
+folder=$1
+# /home/ubuntu/jenkins_data1
+ip=$2
+rsync -avz root@$ip:$folder ~/Downloads --exclude caches --exclude jobs --exclude workspace

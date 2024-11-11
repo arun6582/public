@@ -5,7 +5,7 @@
 
 # fetch-and-checkout stands for fetch and checkout
 
-set -eux
+set -eu
 
 rest="${@:3}"
 git br xyz

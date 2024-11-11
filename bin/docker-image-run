@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -uxe
+# do not add -it option by default
+
+set -ue
 
 image=$1
 command=$2

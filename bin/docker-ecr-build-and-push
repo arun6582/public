@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -uxe
+set -ue
 
 dockerfile=$1
 tag=$2

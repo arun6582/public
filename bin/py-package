@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -eu
+
+# Get the path from the first argument
+BASE_DIR=$1
+
+# Check if the given path is a directory
+if [ ! -d "$BASE_DIR" ]; then
+    mkdir -p $BASE_DIR
+fi
+
+# Function to recursively add __init__.py to all directories
+add_init_files() {
+    for dir in "$1"/*; do
+        if [ -d "$dir" ]; then
+            # Create __init__.py in the directory if it doesn't exist
+            if [ ! -f "$dir/__init__.py" ]; then
+                touch "$dir/__init__.py"
+                echo "Created __init__.py in $dir"
+            fi
+            # Recursively call the function for subdirectories
+            add_init_files "$dir"
+        fi
+    done
+}
+
+# Start by adding __init__.py to the base directory if needed
+if [ ! -f "$BASE_DIR/__init__.py" ]; then
+    touch "$BASE_DIR/__init__.py"
+    echo "Created __init__.py in $BASE_DIR"
+fi
+
+# Call the recursive function for the base directory
+add_init_files "$BASE_DIR"

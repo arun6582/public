@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -x
+# set -x
 
 SNAP_FOLDER=$1
 
@@ -33,3 +33,4 @@ ls ~/.Trash/ | xargs -I {} rm -rf "$HOME/.Trash/{}"
 rm -rf ~/.npm/_cacache/tmp/*
 
 logmsg "*********free local space finished"
+notify 'Local space freed'

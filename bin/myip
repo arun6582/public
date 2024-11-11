@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-curl https://ipinfo.io
+curl -4 ip.sb
+curl -6 ip.sb

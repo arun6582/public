@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -x
+
+source_file() {
+    [[ -r "$1" ]] && . "$1" || echo "File not found: $1"
+}
+
+source_repo_env_sh() {
+    if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        git_dir=$(git rev-parse --show-toplevel)
+        target_dir=$(pwd)
+        directories=('')
+        # echo $target_dir, $directories
+
+        if ! [ "$target_dir" = "$git_dir" ]; then
+            relative_path="${target_dir#${git_dir}}"
+            directories+=(${relative_path//// })
+        fi
+        current_dir="$git_dir"
+        # echo $target_dir, $directories
+
+        for dir in "${directories[@]}"; do
+            # echo $dir
+            current_dir="$current_dir/$dir"
+            builtin cd $current_dir
+            current_dir="${current_dir%/}"
+            repo_env_sh=$current_dir/repo.env.sh
+            if [ -f "$repo_env_sh" ]; then
+                pretty-msg "Sourcing $repo_env_sh" --no-capitalize
+                source_file $repo_env_sh
+            fi
+        done
+        return 0
+    fi
+}
+
+source_repo_env_sh

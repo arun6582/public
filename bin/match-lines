@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Check each line in file b against file a.
+# For each line in b, if it does appear in file a (as a substring in any line of a), print that line from b.
+# -v reverses the match
+#
+# set -x
+
+# Check for the -v flag
+print_present=true
+if [[ "$1" == "-v" ]]; then
+    print_present=false
+    shift # Remove the flag from the argument list
+fi
+
+# Assign the files to variables
+
+file_a="/tmp/file_$$_a"
+file_b="/tmp/file_$$_b"
+
+cat $2 >$file_a
+cat $1 >$file_b
+
+# cat $file_a
+# cat $file_b
+
+# Check if both files are provided
+if [[ -z "$file_a" || -z "$file_b" ]]; then
+    echo "Usage: $0 [-v] <file_a> <file_b>"
+    exit 1
+fi
+
+# Loop through each line in file_b
+while IFS= read -r line_b; do
+    # Check if the line from file_b exists as a substring in any line of file_a
+    if grep -qF "$line_b" "$file_a"; then
+        # If -v is used, print lines present in file_a
+        if [[ "$print_present" == true ]]; then
+            grep -F "$line_b" "$file_a"
+        fi
+    else
+        # If -v is not used, print lines absent in file_a
+        if [[ "$print_present" == false ]]; then
+            echo "$line_b"
+        fi
+    fi
+done <"$file_b"
+rm -rf $file_a $file_b

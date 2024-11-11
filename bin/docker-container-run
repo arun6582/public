@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# runs command in running docker container
+
+set -u
+
+container_name_pattern=$1
+shift
+command="$@"
+
+container_name=$(docker ps --format '{{.Names}}' | grep "$container_name_pattern" | head -n 1)
+
+if [ -z "$container_name" ]; then
+    exit 1
+fi
+
+docker exec -it "$container_name" $command

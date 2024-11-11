@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# set -x
+
+file=$1
+if [[ "$(system-name)" == "Mac" ]]; then
+    stat -f '%A' $file
+else
+    stat -c "%a %n" $file
+fi

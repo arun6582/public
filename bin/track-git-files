@@ -52,7 +52,9 @@ mkdir -p $final_folder_path
 
 # Examples: --max-size=1.5mb-1 is 1499999 bytes, and --max-size=2g+1 is 2147483649 bytes.
 
-rsync -az --delete --filter 'protect .git**' "$tmp/" "$final_folder_path" --max-size=1mb
+rsync -az --delete --filter 'protect .git**' \
+	--exclude *.log \
+	"$tmp/" "$final_folder_path" --max-size=1mb
 rm -rf "$tmp"
 #
 

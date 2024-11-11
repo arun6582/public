@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -x
+
+# java -jar bfg.jar "$@"
+java -jar ~/projects/bfg.jar "$@"

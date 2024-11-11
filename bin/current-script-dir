@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=$(dirname $(absolute-path $1))
+echo $SCRIPT_DIR
