@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# purpose of this script is to fresh start the branch current branch
+# purpose of this script is to fresh start the branch from current branch
 
 set -u
 

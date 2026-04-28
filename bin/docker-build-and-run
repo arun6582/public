@@ -1,19 +1,42 @@
 #!/usr/bin/env bash
 
-# do not add -it option by default
+# docker-build-and-run ~/projects/helpers/Dockerfile_cacert bash -r "-it -v `pwd`/certs:/etc/letsencrypt"
 
-set -ue
+# docker-build-and-run Dockerfile bash -b "--build-arg GITHUB_TOKEN=$GITHUB_TOKEN" -r '-it'
+
+# Do not add -it option by default
+set -xue
 
 dockerfile=$1
-command=$2
+shift
+command=$1
+shift
 
-if [[ "$(system-name)" == "Mac" ]]; then
+# Initialize variables for optional arguments
+build_args=""
+run_options=""
+
+# Parse optional arguments -b and -r
+while getopts "b:r:" opt; do
+    case $opt in
+    b) build_args="$OPTARG" ;;  # Everything after -b is passed to build command
+    r) run_options="$OPTARG" ;; # Everything after -r is passed to docker run
+    *)
+        echo "Invalid option"
+        exit 1
+        ;;
+    esac
+done
+
+# Generate a unique tag
+if [[ "$(uname)" == "Darwin" ]]; then # Check for MacOS using `uname`
     tag=$(echo $RANDOM | md5 | head -c 20)
 else
     tag=$(echo $RANDOM | md5sum | head -c 20)
 fi
 
-run_options="${@:3}"
+# Run the build command with the optional build args
+docker build -t $tag -f $dockerfile $build_args .
 
-docker build -t $tag -f $dockerfile .
+# Run the Docker image with the specified command and options
 docker-image-run $tag "$command" $run_options

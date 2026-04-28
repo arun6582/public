@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-if [[ ! -d "$UNTRACKED/.git" ]]; then
-    rm -rf $UNTRACKED
-    git clone $UNTRACKED_REPO $UNTRACKED
-fi
+# set -x
+git sclone $UNTRACKED_REPO --path $UNTRACKED
+
+cd $UNTRACKED
+git config core.sshCommand "ssh -i ~/.ssh/id_rsa"

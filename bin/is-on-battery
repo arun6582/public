@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -x
+# set -x
 
 if [[ $(pmset -g batt | head -1) =~ "Battery" ]]; then
     echo 1

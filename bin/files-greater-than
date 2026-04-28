@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# usage file-size-filter [1000]
+# usage
+# file-size-filter [1000]
 # 1000 is in kbytes
 
 # set -x

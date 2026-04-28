@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+name=$1
+aws ecr delete-repository --repository-name $name --force

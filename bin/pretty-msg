@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 msg=$1
+shift
+cap=$1
 
 printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
-if [[ $2 == '--no-capitalize' ]]; then
+if [[ $cap == '--no-capitalize' || $cap == '--no-cap' ]]; then
 	printf '%s\n' "$msg"
 else
 	y=${msg^^}

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -xe
+
 public=~/projects/arun6582/public
 REPO="git@github.com:arun6582/public.git"
 
@@ -11,7 +13,7 @@ fi
 cd $public
 
 fco origin master -f
-rsync -avz ~/projects/myapps/cmd-tools/playbooks/templates/bin/ bin/ --delete
+rsync -avz ~/projects/arun6582/myapps/cmd-tools/playbooks/templates/bin/ bin/ --delete
 
 git add .
 git commit -m "terminal helpers: $(date)"

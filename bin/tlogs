@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -xu
+# watch logs in /tmp dir by file pattern
+
+set -u
 
 file_pattern=$1
 

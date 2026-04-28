@@ -33,10 +33,10 @@ fi
 # Loop through each line in file_b
 while IFS= read -r line_b; do
     # Check if the line from file_b exists as a substring in any line of file_a
-    if grep -qF "$line_b" "$file_a"; then
+    if grep -iqF "$line_b" "$file_a"; then
         # If -v is used, print lines present in file_a
         if [[ "$print_present" == true ]]; then
-            grep -F "$line_b" "$file_a"
+            grep -iF "$line_b" "$file_a"
         fi
     else
         # If -v is not used, print lines absent in file_a

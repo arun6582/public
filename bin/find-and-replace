@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+# rename files
+# find-and-replace freeze_card.svg freeze-card.svg -g
+
+# replace occurences inside file
+# find-and-replace freeze_card.svg freeze-card.svg
+
+
 set -ux
 
 find_str=$1
@@ -8,12 +15,12 @@ replace_str=$2
 set +u
 
 if [[ ! $3 == '-g' ]]; then
-	for file in $(ag $find_str -l); do
+	for file in $(ag $find_str -lu); do
 		pretty-msg "REPLACING in $file" --no-capitalize
 		gsed -i -E "s/$find_str/$replace_str/g" $file
 	done
 else
-	for file in $(ag -g $find_str); do
+	for file in $(ag -g $find_str -u); do
 		new="${file/$find_str/$replace_str}"
 		pretty-msg "$file RENAMED TO $new" --no-capitalize
 		mkdir -p $(dirname $new)

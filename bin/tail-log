@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -xu
+set -u
 
 target_folder=$1
 file_pattern=$2

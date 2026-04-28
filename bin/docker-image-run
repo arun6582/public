@@ -2,7 +2,7 @@
 
 # do not add -it option by default
 
-set -ue
+set -uex
 
 image=$1
 command=$2

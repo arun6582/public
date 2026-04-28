@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+file_name=cafe_menu.pdf
+
+aws s3 cp --acl public-read /Users/arun/Documents/$file_name s3://myapp-public/$file_name
+echo https://myapp-public.s3.amazonaws.com/$file_name
