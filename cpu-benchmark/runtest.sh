@@ -10,6 +10,7 @@ job() {
 
 set -eu
 
+python -V
 for i in {1..3}
 do
   job $i $1 $2
