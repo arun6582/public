@@ -9,5 +9,6 @@ def factorial(n):
 
 
 if __name__ == '__main__':
+    print(sys.version)
     for i in range(0, int(sys.argv[2])):
         factorial(int(sys.argv[1]))
