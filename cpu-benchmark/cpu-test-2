@@ -1,14 +1,22 @@
 #!/usr/bin/env bash
 
+factorial(){
+    n=$1
+    local fact=1
+    for ((i=1; i<=$n; i++)); do
+        fact=$((fact * i))
+    done
+}
+
 f() {
-  local a=$1
-  for ((i=1; i<=a; i++)); do
-    x=$((i*i + 1))
-  done
+    local a=$1
+    for ((i=1; i<=a; i++)); do
+        factorial $i
+    done
 }
 
 for i in {1..3}
 do
-  echo "TEST - $i"
-  time f $1 
+    echo "TEST - $i"
+    time f $1
 done
