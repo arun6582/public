@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-curl -sL https://git.io/JO3e5 | bash -s -- 100 1000000
-curl -sL https://git.io/JO3vT | bash -
+curl -sL https://tinyurl.com/5bjj3sf8 | bash -s -- 1000000
+curl -sL https://tinyurl.com/3npwjzpz | bash -
