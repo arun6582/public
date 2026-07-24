@@ -10,7 +10,7 @@
 set -e
 
 screenshot_folder=$1
-pretty-msg "Copy Latest Screenshot"
+echo "Triggerred copy screenshot"
 
 # warnings
 # https://stackoverflow.com/questions/5885934/bash-function-to-find-newest-file-matching-pattern
@@ -26,9 +26,6 @@ if [[ $latest_file =~ .mov$ ]]; then
 fi
 
 if [[ $latest_file =~ .(png|jpeg|jpg)$ ]]; then
-	pretty-msg 'copy screenshot to clipboard'
+	echo "Copy screenshot to clipboard $latest_file"
 	copy-image "$latest_file"
-  notify 'Copy screenshot' "$(basename "$latest_file")"
 fi
-
-echo result=$latest_file
