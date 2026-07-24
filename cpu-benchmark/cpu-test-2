@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+f() {
+  local a=$1
+  for ((i=1; i<=a; i++)); do
+    x=$((i*i + 1))
+  done
+}
+
+for i in {1..3}
+do
+  echo "TEST - $i"
+  time f $1 
+done
