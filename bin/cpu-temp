@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+index=1
+while true; do
+    echo "$index: $(osx-cpu-temp -c)"
+    sleep 5
+    index=$((index + 1))
+done

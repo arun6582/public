@@ -16,8 +16,5 @@ for i in $hist; do
     pretty-msg "#$index: $count Result found"
     git show $i --pretty="%h%n%an%n%ar%n%ad" --no-patch
     git show $i | rg "$1"
-    notify "Commit Search" "Results found"
     read -n 1 -s
 done
-
-notify "Commit Search" "Finished"

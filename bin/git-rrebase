@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# suppposed to be used when you are working on a different branch
+# than the branch you want to rebase from
+# for example done from a feature branch
+# for rebase current branch from remote
+# use git spull
+
 set -eu
 
 remote=$1
