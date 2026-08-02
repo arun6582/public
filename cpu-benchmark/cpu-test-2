@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+bash --version
+
 factorial(){
     n=$1
     local fact=1
