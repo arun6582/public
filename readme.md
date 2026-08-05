@@ -2,24 +2,24 @@
 
 ###### cpu test
 
-`curl -sL https://tinyurl.com/3893new8 | bash -s -- 100 1000000`
+`curl -sL https://tinyurl.com/python-cpu-test | bash -s -- 100 1000000`
 
 ###### cpu test 2
 
-`curl -sL https://tinyurl.com/5bjj3sf8 | bash -s -- 1500`
+`curl -sL https://tinyurl.com/bash-cpu-test | bash -s -- 1500`
 
 ###### disk test
 
-`curl -sL https://tinyurl.com/p6ysvvd7 | sudo bash -`
+`curl -sL https://tinyurl.com/disk-test | sudo bash -`
 
 ###### run all
 
-`curl -sL https://tinyurl.com/4b3yttym | sudo bash -`
+`curl -sL https://tinyurl.com/all-tests-1 | sudo bash -`
 
 ### download terminal helpers
 
-`curl -sL https://tinyurl.com/56hh3fxr | bash -s -- [target bin parent folder]`
+`curl -sL https://tinyurl.com/terminal-helpers | bash -s -- [target bin parent folder]`
 
 ### download inputrc
 
-`wget https://tinyurl.com/2aahxhhp`
+`wget https://tinyurl.com/inputrc-1`
