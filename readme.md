@@ -10,7 +10,7 @@
 
 ###### disk test
 
-`curl -sL https://tinyurl.com/3npwjzpz | sudo bash -`
+`curl -sL https://tinyurl.com/p6ysvvd7 | sudo bash -`
 
 ###### run all
 
