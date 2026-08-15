@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 
     for (int test = 1; test <= 10; test++)
     {
-        printf("TEST - %d\n", test);
+        printf("TEST - #%d\n", test);
 
         double total_time = 0.0;
         int total_reps = reps;
