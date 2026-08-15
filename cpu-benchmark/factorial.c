@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     int n = atoi(argv[1]);
     int reps = atoi(argv[2]);
 
-    for (int test = 1; test <= 3; test++)
+    for (int test = 1; test <= 10; test++)
     {
         printf("TEST - %d\n", test);
 
@@ -62,8 +62,8 @@ int main(int argc, char *argv[])
         double average = total_time / total_reps;
         double score = 100.0 / average;
 
-        printf("Total:   %.6f seconds\n", total_time);
-        printf("Average: %.9f seconds\n", average);
+        // printf("Total:   %.6fs\n", total_time);
+        // printf("Average: %.9fs\n", average);
         printf("Score:   %.2f\n", score);
     }
 
