@@ -8,6 +8,10 @@
 
 `curl -sL https://tinyurl.com/bash-cpu-test | bash -s -- 1500`
 
+###### cpu test 3
+
+`curl -sL https://tinyurl.com/gcc-cpu-test | bash -s -- 1500 100`
+
 ###### disk test
 
 `curl -sL https://tinyurl.com/disk-test | sudo bash -`

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+file=test
+
+gcc -v
+
+cleanup() {
+	echo "Ctrl+C pressed"
+	rm -rf $file
+	exit 0
+}
+
+trap cleanup INT
+
+curl -fsSL \
+	'https://raw.githubusercontent.com/arun6582/public/master/cpu-benchmark/factorial.c' |
+	gcc -O0 -x c -o $file -
+./$file $1 $2
