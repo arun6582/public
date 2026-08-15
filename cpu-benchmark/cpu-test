@@ -4,7 +4,7 @@ chmod +x $file
 
 job() {
 	echo "TEST - #$1"
-	time $file $2 $3
+	$file $2 $3
 }
 
 set -eu
