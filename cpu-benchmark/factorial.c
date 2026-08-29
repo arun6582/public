@@ -101,7 +101,7 @@ double multicore_benchmark(void)
 
     double time = now_seconds() - start;
     double score = 100.0 / time;
-    printf("Multi score Score:   %.2f\n", score);
+    printf("Multi core Score:   %.2f\n", score);
     return score;
 }
 

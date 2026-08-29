@@ -1,16 +1,12 @@
 ### benchmark
 
-###### cpu test
+###### python cpu test
 
-`curl -sL https://tinyurl.com/python-cpu-test | bash -s -- 100 1000000`
+`curl -sL https://tinyurl.com/python-cpu-test | bash -s`
 
-###### cpu test 2
+###### gcc cpu test
 
-`curl -sL https://tinyurl.com/bash-cpu-test | bash -s -- 1500`
-
-###### cpu test 3
-
-`curl -sL https://tinyurl.com/gcc-cpu-test | bash -s -- 1500 100`
+`curl -sL https://tinyurl.com/gcc-cpu-test | bash -s`
 
 ###### disk test
 

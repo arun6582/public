@@ -11,5 +11,5 @@ set -eu
 
 python -V
 for i in {1..10}; do
-	job $i $1 $2
+	job $i 100 1000000
 done
