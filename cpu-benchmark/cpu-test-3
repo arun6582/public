@@ -19,6 +19,6 @@ trap cleanup INT
 curl -fsSL \
 	'https://raw.githubusercontent.com/arun6582/public/master/cpu-benchmark/factorial.c' |
 	gcc -O0 -std=c11 -pthread -x c -o $file -
-./$file 1500 100
+./$file
 
 cleanup

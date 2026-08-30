@@ -13,12 +13,15 @@
 #include <unistd.h>
 #endif
 
-#define ITERATIONS 500000000ULL
+// this number is LCM of 4 6 10 12 15 18
+// commonly available numer of cores
+#define ITERATIONS 180ULL
 
 typedef struct
 {
     uint64_t iterations;
     double result;
+    int n;
 } worker_args;
 
 static int cpu_count(void)
@@ -45,6 +48,29 @@ static double now_seconds(void)
            (double)ts.tv_nsec / 1e9;
 }
 
+unsigned long long factorial(int n)
+{
+    unsigned long long fact = 1;
+
+    for (int i = 1; i <= n; i++)
+    {
+        fact *= i;
+    }
+
+    return fact;
+}
+
+void factorials(int a, int reps)
+{
+    for (int r = 0; r < reps; r++)
+    {
+        for (int i = 1; i <= a; i++)
+        {
+            factorial(i);
+        }
+    }
+}
+
 static void *worker(void *arg)
 {
     worker_args *a = arg;
@@ -52,14 +78,12 @@ static void *worker(void *arg)
     double x = 1.0;
 
     for (uint64_t i = 0; i < a->iterations; i++)
-        x = x * 1.0000001 + 0.0000001;
-
-    a->result = x;
+        factorials(a->n, 100);
 
     return NULL;
 }
 
-double multicore_benchmark(void)
+double multicore_benchmark(int n)
 {
     int cores = cpu_count();
     printf("Cores: %d\n", cores);
@@ -74,8 +98,9 @@ double multicore_benchmark(void)
 
     for (int i = 0; i < cores; i++)
     {
-        args[i].iterations = ITERATIONS;
+        args[i].iterations = ITERATIONS / cores;
         args[i].result = 0.0;
+        args[i].n = n;
 
         pthread_create(
             &threads[i],
@@ -103,29 +128,6 @@ double multicore_benchmark(void)
     double score = 100.0 / time;
     printf("Multi core Score:   %.2f\n", score);
     return score;
-}
-
-unsigned long long factorial(int n)
-{
-    unsigned long long fact = 1;
-
-    for (int i = 1; i <= n; i++)
-    {
-        fact *= i;
-    }
-
-    return fact;
-}
-
-void factorials(int a, int reps)
-{
-    for (int r = 0; r < reps; r++)
-    {
-        for (int i = 1; i <= a; i++)
-        {
-            factorial(i);
-        }
-    }
 }
 
 double memory_bandwidth_gbps(void)
@@ -197,22 +199,15 @@ double singlecore_benchmark(void (*f)(int, int), int n, int reps)
 
 int main(int argc, char *argv[])
 {
-    if (argc < 3)
-    {
-        fprintf(stderr, "Usage: %s <n> <reps>\n", argv[0]);
-        return 1;
-    }
-
-    int n = atoi(argv[1]);
-    int reps = atoi(argv[2]);
+    int n = 1500;
 
     for (int test = 1; test <= 10; test++)
     {
         printf("TEST - #%d\n", test);
 
         memory_bandwidth_gbps();
-        singlecore_benchmark(factorials, n, reps);
-        multicore_benchmark();
+        singlecore_benchmark(factorials, n, 100);
+        multicore_benchmark(n);
     }
 
     return 0;

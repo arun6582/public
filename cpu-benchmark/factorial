@@ -30,4 +30,4 @@ def reps(x, f, *args, **kw):
 
 
 if __name__ == "__main__":
-    reps(int(sys.argv[2]), factorial, int(sys.argv[1]))
+    reps(1000000, factorial, 100)

@@ -4,12 +4,12 @@ chmod +x $file
 
 job() {
 	echo "TEST - #$1"
-	$file $2 $3
+	$file
 }
 
 set -eu
 
 python -V
 for i in {1..10}; do
-	job $i 100 1000000
+	job $i
 done
